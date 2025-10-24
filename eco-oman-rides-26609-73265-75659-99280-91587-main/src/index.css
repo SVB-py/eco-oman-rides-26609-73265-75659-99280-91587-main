@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* ECpool360 Dark Theme - Refined palette matching screenshot */
+    --background: 215 28% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 217 24% 11%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 217 24% 9%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Emerald/Teal Primary (matching screenshot green) */
+    --primary: 160 70% 48%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 160 70% 60%;
+
+    /* Cyan Blue Secondary */
+    --secondary: 187 75% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 187 75% 70%;
+
+    /* Yellow/Amber Accent */
+    --accent: 44 95% 62%;
+    --accent-foreground: 217 24% 11%;
+
+    --muted: 217 20% 18%;
+    --muted-foreground: 217 15% 60%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 217 20% 20%;
+    --input: 217 20% 18%;
+    --ring: 160 70% 48%;
+
+    --radius: 0.75rem;
+
+    /* Glassmorphism - Enhanced */
+    --glass-bg: 217 24% 11% / 0.5;
+    --glass-border: 0 0% 100% / 0.08;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(160 70% 48%), hsl(187 75% 55%));
+    --gradient-secondary: linear-gradient(135deg, hsl(187 75% 55%), hsl(221 83% 53%));
+    --gradient-accent: linear-gradient(135deg, hsl(160 70% 48%), hsl(160 84% 39%));
+    --gradient-glow: linear-gradient(135deg, hsl(160 70% 48% / 0.15), hsl(187 75% 55% / 0.15));
+    
+    /* Shadows - Softer, more refined */
+    --shadow-glow: 0 0 32px hsl(160 70% 48% / 0.25);
+    --shadow-cyan-glow: 0 0 32px hsl(187 75% 55% / 0.25);
+    --shadow-accent-glow: 0 0 24px hsl(44 95% 62% / 0.35);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.4);
+    --shadow-elevated: 0 20px 50px hsl(0 0% 0% / 0.5);
+
+  /* Animations */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Wow-factor animations */
+  --animation-fade-in: fade-in 0.6s ease-out forwards;
+  --animation-shimmer: shimmer 2s linear infinite;
+  --animation-glow-pulse: glow-pulse 2s ease-in-out infinite alternate;
+  --animation-scale-in: scale-in 0.5s ease-out forwards;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  /* Glassmorphism utility - Enhanced */
+  .glass-card {
+    background: rgba(22, 27, 34, 0.5);
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-card);
+  }
+
+  .glass-card:hover {
+    background: rgba(22, 27, 34, 0.65);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  /* Glow effects - Refined */
+  .glow-primary {
+    box-shadow: 0 0 28px hsl(160 70% 48% / 0.3), 0 0 56px hsl(160 70% 48% / 0.15);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 28px hsl(187 75% 55% / 0.3), 0 0 56px hsl(187 75% 55% / 0.15);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 24px hsl(44 95% 62% / 0.4), 0 0 48px hsl(44 95% 62% / 0.2);
+  }
+
+  /* Hover scale animation */
+  .hover-scale {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+
+  /* Gradient text utility */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Enhanced button hover states */
+  button {
+    transition: var(--transition-smooth);
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(217 24% 9%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(217 20% 20%);
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(160 70% 48% / 0.5);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  /* Smooth transitions */
+  .smooth-transition {
+    transition: var(--transition-smooth);
+  }
+
+  /* Wow-factor keyframe animations */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes glow-pulse {
+    from {
+      box-shadow: 0 0 20px hsl(160 70% 48% / 0.3);
+    }
+    to {
+      box-shadow: 0 0 40px hsl(160 70% 48% / 0.6);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Utility classes for wow-factor animations */
+  .animate-fade-in {
+    animation: var(--animation-fade-in);
+  }
+
+  .animate-shimmer {
+    animation: var(--animation-shimmer);
+  }
+
+  .animate-glow-pulse {
+    animation: var(--animation-glow-pulse);
+  }
+
+  .animate-scale-in {
+    animation: var(--animation-scale-in);
+  }
+}
